@@ -4,6 +4,7 @@ import Loading from "../components/Loading"
 import ProductList from "../components/products/ProductList"
 const Products = () => {
   const { loading, products } = useContext(ProductContext)
+  console.log(products);
   if (loading) return <Loading />
   return (
     <main>

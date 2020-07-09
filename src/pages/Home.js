@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Hero from "../components/Hero"
 import { Link } from "react-router-dom"
-import { ProductContext } from "../context/Products"
+import FeaturedProducts from '../components/products/FeaturedProducts'
 const Home = () => {
-  const { featured } = useContext(ProductContext)
   return (
     <main>
       <Hero>
@@ -13,6 +12,7 @@ const Home = () => {
           <Link className="text-capitalize btn btn-outline-warning px-5 my-3" to="/products">our products</Link>
         </div>
       </Hero>
+      <FeaturedProducts />
     </main>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import url from "../utilities/URL"
+import { featuredProduct } from "../utilities/helpers"
 const ProductContext = React.createContext();
 
 const ProductProvider = ({ children }) => {
@@ -14,8 +15,9 @@ const ProductProvider = ({ children }) => {
     setLoading(true);
     try {
       axios.get(`${url}/products`).then(response => {
+        const featured = featuredProduct(response.data);
         setProducts(response.data);
-        setFeatured(() => response.data.filter(data => data.featured === true));
+        setFeatured(featured);
         setLoading(false);
       })
     } catch (error) {

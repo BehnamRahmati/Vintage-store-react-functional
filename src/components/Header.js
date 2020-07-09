@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { FaUserAlt, FaCartPlus } from "react-icons/fa"
 import logo from "../assets/logo.svg"
+import { CartContext } from "../context/Cart"
 // ========================================
 const Header = () => {
+  const { cartItem } = useContext(CartContext)
   return (
     <header>
       <TopHeaderWrapper className="d-none d-md-block">
@@ -14,7 +16,7 @@ const Header = () => {
               <Link to="/login" className="btn btn-sm btn-outline-success text-capitalize m-0">register / login <FaUserAlt className="mb-1" /> </Link>
               <div className="cartItem ml-3">
                 <Link to="/cart" className="text-capitalize m-0 text-dark "><FaCartPlus className="mb-1" /></Link>
-                <span className="cartItemCount bg-primary text-light text-center rounded-circle">9</span>
+                <span className="cartItemCount bg-primary text-light text-center rounded-circle">{cartItem}</span>
               </div>
             </div>
             <div className="col-6 d-flex align-items-center justify-content-end">
